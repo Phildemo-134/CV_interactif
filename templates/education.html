@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation & Éducation</title>
+    <style>
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 100%;
+        }
+
+        .education-column {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 0;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .column-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .column-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            color: #64b5f6;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #64b5f6, #42a5f5);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: #64b5f6;
+            border-radius: 50%;
+            border: 3px solid #1a1a2e;
+            z-index: 2;
+        }
+
+        .education-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 0.5rem 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .education-dates {
+            font-size: 0.9rem;
+            color: #b0bec5;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .education-details {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .education-location {
+            color: #90a4ae;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .certification-duration {
+            color: #81c784;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .certification-description {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+        }
+
+        .certification-location {
+            color: #90a4ae;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .education-container {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .education-column {
+                padding: 1rem;
+            }
+            
+            .column-title {
+                font-size: 1.3rem;
+                white-space: normal;
+            }
+            
+            .education-title {
+                font-size: 1.1rem;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-dot {
+                left: 7px;
+                width: 14px;
+                height: 14px;
+            }
+            
+            .timeline-item {
+                padding-left: 2.5rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="education-container">
+        <div class="section-header">
+            <h1 class="section-title">Formation & Éducation</h1>
+        </div>
+
+        <div class="education-grid">
+            <!-- Colonne Formation Supérieure -->
+            <div class="education-column">
+                <div class="column-header">
+                    <h2 class="column-title">
+                        <svg class="column-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+                        </svg>
+                        Formation Supérieure
+                    </h2>
+                </div>
+                
+                <div class="timeline">
+                    {{#formations}}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="education-title">{{nom}}</h3>
+                        <p class="education-dates">{{annee}}</p>
+                        <div class="education-details">
+                            {{specialisation}}
+                        </div>
+                        <div class="education-location">{{ecole}}, {{lieu}}</div>
+                        {{#mention}}
+                        <div class="education-location">Mention: {{mention}}</div>
+                        {{/mention}}
+                    </div>
+                    {{/formations}}
+                </div>
+            </div>
+
+            <!-- Colonne Formation Continue -->
+            <div class="education-column">
+                <div class="column-header">
+                    <h2 class="column-title">
+                        <svg class="column-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+                        </svg>
+                        Formation Continue
+                    </h2>
+                </div>
+                
+                <div class="timeline">
+                    {{#certifications}}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="education-title">{{nom}}</h3>
+                        <p class="education-dates">{{annee}}{{#duree}} ({{duree}}){{/duree}}</p>
+                        <div class="certification-description">{{organisme}}</div>
+                        <div class="certification-location">Online</div>
+                    </div>
+                    {{/certifications}}
+                    
+                    {{#formations_continue}}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="education-title">{{nom}}</h3>
+                        <p class="education-dates">{{annee}}{{#duree}} ({{duree}}){{/duree}}</p>
+                        <div class="certification-description">{{organisme}}</div>
+                        {{#objectif}}
+                        <div class="certification-description">{{objectif}}</div>
+                        {{/objectif}}
+                        <div class="certification-location">Online</div>
+                    </div>
+                    {{/formations_continue}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

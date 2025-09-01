@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Interactif</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>CV Interactif</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="nav-link active" data-section="accueil">Accueil</a></li>
+                <li><a href="#informations" class="nav-link" data-section="informations">Informations</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Éducation</a></li>
+                <li><a href="#experiences" class="nav-link" data-section="experiences">Expériences</a></li>
+                <li><a href="#qualites" class="nav-link" data-section="qualites">Qualités</a></li>
+                <li><a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="main-content">
+            <!-- Section Accueil -->
+            <section id="accueil" class="section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h2>Bienvenue sur mon CV Interactif</h2>
+                        <p>Découvrez mon parcours professionnel et mes compétences</p>
+                        <button class="cta-button" onclick="showSection('informations')">
+                            Commencer la visite <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Informations personnelles -->
+            <section id="informations" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> Informations Personnelles</h2>
+                </div>
+                <div class="section-content">
+                    <div id="informations-content" class="markdown-content">
+                        <!-- Le contenu sera chargé dynamiquement depuis le fichier markdown -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Éducation -->
+            <section id="education" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap"></i> Éducation</h2>
+                </div>
+                <div class="section-content">
+                    <div id="education-content" class="markdown-content">
+                        <!-- Le contenu sera chargé dynamiquement depuis le fichier markdown -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Expériences -->
+            <section id="experiences" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
+                </div>
+                <div class="section-content">
+                    <div id="experiences-content" class="markdown-content">
+                        <!-- Le contenu sera chargé dynamiquement depuis le fichier markdown -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Qualités -->
+            <section id="qualites" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Qualités & Compétences</h2>
+                </div>
+                <div class="section-content">
+                    <div id="qualites-content" class="markdown-content">
+                        <!-- Le contenu sera chargé dynamiquement depuis le fichier markdown -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Portfolio -->
+            <section id="portfolio" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-folder-open"></i> Portfolio</h2>
+                </div>
+                <div class="section-content">
+                    <div id="portfolio-content" class="markdown-content">
+                        <!-- Le contenu sera chargé dynamiquement depuis le fichier markdown -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 CV Interactif. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

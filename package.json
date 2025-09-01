@@ -1,0 +1,29 @@
+{
+  "name": "cv-interactif",
+  "version": "1.0.0",
+  "description": "Site statique de CV interactif avec HTML, CSS et Javascript",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/index.html",
+    "build": "echo 'Build completed - static files ready'",
+    "serve": "npx http-server . -p 8080"
+  },
+  "keywords": [
+    "cv",
+    "portfolio",
+    "html",
+    "css",
+    "javascript",
+    "markdown"
+  ],
+  "author": "Votre Nom",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "marked": "^9.1.6"
+  }
+}

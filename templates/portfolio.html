@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        .portfolio-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.5rem 2rem;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 1rem;
+            color: #3498db;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .meta-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.75rem;
+            color: #bdc3c7;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            margin-right: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .meta-value {
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #3498db;
+        }
+
+        .description-text {
+            color: #555;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .features-section, .challenges-section, .impact-section, .learnings-section {
+            margin-bottom: 2rem;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+
+        .subsection-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.75rem;
+        }
+
+        .features-icon {
+            color: #27ae60;
+        }
+
+        .challenges-icon {
+            color: #e74c3c;
+        }
+
+        .impact-icon {
+            color: #f39c12;
+        }
+
+        .learnings-icon {
+            color: #9b59b6;
+        }
+
+        .features-list, .challenges-list, .impact-list, .learnings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li, .challenges-list li, .impact-list li, .learnings-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features-list li:last-child, .challenges-list li:last-child, 
+        .impact-list li:last-child, .learnings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .challenges-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .impact-list li::before {
+            content: "📈";
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+        }
+
+        .learnings-list li::before {
+            content: "🎓";
+            position: absolute;
+            left: 0;
+            color: #9b59b6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+        }
+
+        .project-link:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+        }
+
+        .project-link.github {
+            background: #2c3e50;
+            box-shadow: 0 2px 4px rgba(44, 62, 80, 0.3);
+        }
+
+        .project-link.github:hover {
+            background: #34495e;
+            box-shadow: 0 4px 8px rgba(44, 62, 80, 0.4);
+        }
+
+        .link-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-en-cours {
+            background: #e8f5e8;
+            color: #27ae60;
+        }
+
+        .status-termine {
+            background: #e3f2fd;
+            color: #2196f3;
+        }
+
+        .status-en-pause {
+            background: #fff3e0;
+            color: #ff9800;
+        }
+
+        .contribution-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contribution-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contribution-header {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .contribution-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .contribution-type {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .contribution-details {
+            padding: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-header {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .achievement-date {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .achievement-details {
+            padding: 2rem;
+        }
+
+        .achievement-description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-container {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-header, .project-content {
+                padding: 1.5rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .project-link {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <div class="section-header">
+            <h1 class="section-title">Portfolio</h1>
+        </div>
+
+        <div class="portfolio-section">
+            <div class="section-category">
+                <h2 class="category-title">
+                    <svg class="category-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    Projets Professionnels
+                </h2>
+            </div>
+
+            {{#projets_professionnels}}
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">{{nom}}</h3>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="meta-label">Période :</span>
+                            <span class="meta-value">{{periode}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="meta-label">Technologies :</span>
+                            <span class="meta-value">{{technologies}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="meta-label">Rôle :</span>
+                            <span class="meta-value">{{role}}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <p class="description-text">{{description}}</p>
+                    </div>
+
+                    {{#fonctionnalites}}
+                    <div class="features-section">
+                        <h4 class="subsection-title">
+                            <svg class="subsection-icon features-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                            Fonctionnalités principales
+                        </h4>
+                        <ul class="features-list">
+                            {{#fonctionnalites}}
+                            <li>{{.}}</li>
+                            {{/fonctionnalites}}
+                        </ul>
+                    </div>
+                    {{/fonctionnalites}}
+
+                    {{#defis}}
+                    <div class="challenges-section">
+                        <h4 class="subsection-title">
+                            <svg class="subsection-icon challenges-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            Défis relevés
+                        </h4>
+                        <ul class="challenges-list">
+                            {{#defis}}
+                            <li>{{.}}</li>
+                            {{/defis}}
+                        </ul>
+                    </div>
+                    {{/defis}}
+
+                    {{#impact}}
+                    <div class="impact-section">
+                        <h4 class="subsection-title">
+                            <svg class="subsection-icon impact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Impact
+                        </h4>
+                        <ul class="impact-list">
+                            {{#impact}}
+                            <li>{{.}}</li>
+                            {{/impact}}
+                        </ul>
+                    </div>
+                    {{/impact}}
+
+                    {{#lien_projet}}
+                    <div class="project-links">
+                        {{#lien_projet}}
+                        <a href="{{lien_projet}}" class="project-link" target="_blank">
+                            <svg class="link-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+                            </svg>
+                            Voir le projet
+                        </a>
+                        {{/lien_projet}}
+                        {{#code_source}}
+                        <a href="{{code_source}}" class="project-link github" target="_blank">
+                            <svg class="link-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Code source
+                        </a>
+                        {{/code_source}}
+                    </div>
+                    {{/lien_projet}}
+                </div>
+            </div>
+            {{/projets_professionnels}}
+        </div>
+
+        <div class="portfolio-section">
+            <div class="section-category">
+                <h2 class="category-title">
+                    <svg class="category-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    Projets Personnels
+                </h2>
+            </div>
+
+            {{#projets_personnels}}
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">{{nom}}</h3>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="meta-label">Technologies :</span>
+                            <span class="meta-value">{{technologies}}</span>
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="meta-label">Statut :</span>
+                            <span class="meta-value">
+                                <span class="status-badge status-{{statut}}">{{statut}}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-description">
+                        <p class="description-text">{{description}}</p>
+                    </div>
+
+                    {{#fonctionnalites}}
+                    <div class="features-section">
+                        <h4 class="subsection-title">
+                            <svg class="subsection-icon features-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                            Fonctionnalités
+                        </h4>
+                        <ul class="features-list">
+                            {{#fonctionnalites}}
+                            <li>{{.}}</li>
+                            {{/fonctionnalites}}
+                        </ul>
+                    </div>
+                    {{/fonctionnalites}}
+
+                    {{#apprentissages}}
+                    <div class="learnings-section">
+                        <h4 class="subsection-title">
+                            <svg class="subsection-icon learnings-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Apprentissages
+                        </h4>
+                        <ul class="learnings-list">
+                            {{#apprentissages}}
+                            <li>{{.}}</li>
+                            {{/apprentissages}}
+                        </ul>
+                    </div>
+                    {{/apprentissages}}
+
+                    {{#lien_projet}}
+                    <div class="project-links">
+                        {{#lien_projet}}
+                        <a href="{{lien_projet}}" class="project-link" target="_blank">
+                            <svg class="link-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+                            </svg>
+                            Voir le projet
+                        </a>
+                        {{/lien_projet}}
+                        {{#code_source}}
+                        <a href="{{code_source}}" class="project-link github" target="_blank">
+                            <svg class="link-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Code source
+                        </a>
+                        {{/code_source}}
+                    </div>
+                    {{/lien_projet}}
+                </div>
+            </div>
+            {{/projets_personnels}}
+        </div>
+
+        <div class="portfolio-section">
+            <div class="section-category">
+                <h2 class="category-title">
+                    <svg class="category-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                    Contributions Open Source
+                </h2>
+            </div>
+
+            {{#contributions_opensource}}
+            <div class="contribution-card">
+                <div class="contribution-header">
+                    <h3 class="contribution-title">{{nom}}</h3>
+                    <p class="contribution-type">{{contribution}}</p>
+                </div>
+                
+                <div class="contribution-details">
+                    <div class="project-description">
+                        <p class="description-text">{{description}}</p>
+                    </div>
+
+                    {{#lien_contribution}}
+                    <div class="project-links">
+                        <a href="{{lien_contribution}}" class="project-link" target="_blank">
+                            <svg class="link-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            Voir la contribution
+                        </a>
+                    </div>
+                    {{/lien_contribution}}
+                </div>
+            </div>
+            {{/contributions_opensource}}
+        </div>
+
+        <div class="portfolio-section">
+            <div class="section-category">
+                <h2 class="category-title">
+                    <svg class="category-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Réalisations & Distinctions
+                </h2>
+            </div>
+
+            {{#realisations}}
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <h3 class="achievement-title">{{titre}}</h3>
+                    <p class="achievement-date">{{date}}</p>
+                </div>
+                
+                <div class="achievement-details">
+                    <p class="achievement-description">{{description}}</p>
+                </div>
+            </div>
+            {{/realisations}}
+        </div>
+    </div>
+</body>
+</html>

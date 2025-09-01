@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expériences Professionnelles</title>
+    <style>
+        .experiences-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2c3e50;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .job-period {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .job-details {
+            padding: 2rem;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.75rem;
+            color: #2c3e50;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-right: 0.5rem;
+        }
+
+        .info-value {
+            color: #555;
+        }
+
+        .subsection {
+            margin-bottom: 2rem;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+
+        .subsection-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.75rem;
+            color: #3498db;
+        }
+
+        .missions-list, .skills-list, .achievements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .missions-list li, .skills-list li, .achievements-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .missions-list li:last-child, .skills-list li:last-child, .achievements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .missions-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8rem;
+        }
+
+        .skills-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .achievements-list li::before {
+            content: "🏆";
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+        }
+
+        .experience-separator {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #bdc3c7, transparent);
+            margin: 3rem 0;
+            border: none;
+        }
+
+        .timeline-indicator {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-indicator::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3498db;
+            transform: translateX(-50%);
+        }
+
+        .timeline-indicator::after {
+            content: "●";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #3498db;
+            font-size: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .experiences-container {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .job-details {
+                padding: 1.5rem;
+            }
+            
+            .timeline-indicator::before {
+                left: 1rem;
+            }
+            
+            .timeline-indicator::after {
+                left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="experiences-container">
+        <div class="section-header">
+            <h1 class="section-title">Expériences Professionnelles</h1>
+        </div>
+
+        {{#experiences}}
+        <div class="experience-card">
+            <div class="experience-header">
+                <h2 class="job-title">{{titre}}</h2>
+                <p class="job-period">{{periode}}</p>
+            </div>
+            
+            <div class="job-details">
+                <div class="company-info">
+                    <div class="info-item">
+                        <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-6a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="info-label">Entreprise :</span>
+                        <span class="info-value">{{entreprise}}</span>
+                    </div>
+                    <div class="info-item">
+                        <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="info-label">Lieu :</span>
+                        <span class="info-value">{{lieu}}</span>
+                    </div>
+                    <div class="info-item">
+                        <svg class="info-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="info-label">Type :</span>
+                        <span class="info-value">{{type}}</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">
+                        <svg class="subsection-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        Missions principales
+                    </h3>
+                    <ul class="missions-list">
+                        {{#missions}}
+                        <li>{{.}}</li>
+                        {{/missions}}
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">
+                        <svg class="subsection-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                        </svg>
+                        Compétences développées
+                    </h3>
+                    <ul class="skills-list">
+                        {{#competences}}
+                        <li>{{.}}</li>
+                        {{/competences}}
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">
+                        <svg class="subsection-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Réalisations
+                    </h3>
+                    <ul class="achievements-list">
+                        {{#realisations}}
+                        <li>{{.}}</li>
+                        {{/realisations}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{#hasNext}}
+        <div class="timeline-indicator"></div>
+        {{/hasNext}}
+        {{/experiences}}
+    </div>
+</body>
+</html>
