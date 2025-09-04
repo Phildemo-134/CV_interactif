@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qualités & Compétences</title>
     <style>
-        .qualites-container {
+        .competences-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
@@ -343,7 +343,7 @@
         .progress-1 { width: 20%; }
 
         @media (max-width: 768px) {
-            .qualites-container {
+            .competences-container {
                 padding: 1rem;
             }
             
@@ -372,7 +372,7 @@
     </style>
 </head>
 <body>
-    <div class="qualites-container">
+    <div class="competences-container">
         
 
         <div class="skills-section">
@@ -549,12 +549,12 @@
                             <svg class="soft-skill-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
-                            Qualités Personnelles
+                            Compétences
                         </h3>
                         <ul class="soft-skill-list">
-                            {{#qualites_personnelles}}
+                            {{#competences}}
                             <li>{{.}}</li>
-                            {{/qualites_personnelles}}
+                            {{/competences}}
                         </ul>
                     </div>
                 </div>

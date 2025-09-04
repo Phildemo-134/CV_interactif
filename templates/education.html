@@ -133,47 +133,24 @@
     <div class="education-container">
         <section class="edu-hero">
             <h1 class="edu-title">Education</h1>
-            <p class="edu-subtitle">I am a great subtitle, perfect for providing more context about the topic you are going to discuss</p>
+            <p class="edu-subtitle">Aperçu synthétique de mes études et certifications</p>
         </section>
 
         <div class="edu-layout">
             <div class="timeline">
-                {{#formations}}
+                {{#timeline}}
                 <div class="timeline-item">
                     <div class="timeline-node">+</div>
                     <div class="timeline-content">
                         <h3 class="timeline-title">{{nom}}</h3>
-                        <div class="timeline-period">{{annee}}</div>
-                        <div class="timeline-meta">{{ecole}}{{#lieu}} • {{lieu}}{{/lieu}}</div>
+                        <div class="timeline-period">{{annee}}{{#duree}} • {{duree}}{{/duree}}</div>
+                        <div class="timeline-meta">{{etablissement}}{{#lieu}} • {{lieu}}{{/lieu}}</div>
                         {{#specialisation}}<div class="timeline-meta">{{specialisation}}</div>{{/specialisation}}
                         {{#mention}}<div class="timeline-meta">Mention: {{mention}}</div>{{/mention}}
-                    </div>
-                </div>
-                {{/formations}}
-
-                {{#certifications}}
-                <div class="timeline-item">
-                    <div class="timeline-node">+</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">{{nom}}</h3>
-                        <div class="timeline-period">{{annee}}{{#duree}} • {{duree}}{{/duree}}</div>
-                        <div class="timeline-meta">{{organisme}}</div>
                         {{#objectif}}<div class="timeline-meta">{{objectif}}</div>{{/objectif}}
                     </div>
                 </div>
-                {{/certifications}}
-
-                {{#formations_continue}}
-                <div class="timeline-item">
-                    <div class="timeline-node">+</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">{{nom}}</h3>
-                        <div class="timeline-period">{{annee}}{{#duree}} • {{duree}}{{/duree}}</div>
-                        <div class="timeline-meta">{{organisme}}</div>
-                        {{#objectif}}<div class="timeline-meta">{{objectif}}</div>{{/objectif}}
-                    </div>
-                </div>
-                {{/formations_continue}}
+                {{/timeline}}
             </div>
         </div>
     </div>

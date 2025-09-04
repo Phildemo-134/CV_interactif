@@ -6,222 +6,230 @@
     <title>Informations Personnelles</title>
     <style>
         .informations-container {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #0b1a3a;
+            background: #eef1f6;
+            border-radius: 14px;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid #2c3e50;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: #2c3e50;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .contact-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-grid {
+        /* Hero */
+        .info-hero {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 260px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
-        .contact-item {
+        .avatar {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: #0b1a3a;
+            position: relative;
             display: flex;
             align-items: center;
-            padding: 0.75rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(11, 26, 58, 0.25);
         }
 
-        .contact-item:hover {
-            transform: translateY(-2px);
+        .avatar::after {
+            content: '+';
+            position: absolute;
+            right: 22%;
+            top: 22%;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f7a600;
+            color: #0b1a3a;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(247, 166, 0, 0.45);
         }
 
-        .contact-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 1rem;
-            color: #2c3e50;
+        .hero-title-small {
+            color: #5a6aa3;
+            font-weight: 800;
+            font-size: 1.75rem;
+            margin: 0 0 0.25rem 0;
         }
 
-        .contact-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-right: 0.5rem;
+        .hero-name {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
         }
 
-        .contact-value {
-            color: #555;
+        .hero-profession {
+            font-size: 1.25rem;
+            color: #2b3b6b;
         }
 
-        .contact-value a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.2s ease;
+        /* Two columns */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
-        .contact-value a:hover {
-            color: #2980b9;
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(11, 26, 58, 0.08);
         }
 
-        .about-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #3498db;
+        .card h3 {
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
         }
 
         .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
+            color: #2b3b6b;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-item .label {
+            font-weight: 700;
+            color: #0b1a3a;
+            margin-right: 0.25rem;
+        }
+
+        .info-item .value a { color: #5a6aa3; text-decoration: none; }
+        .info-item .value a:hover { text-decoration: underline; }
+
+        .Icon { width: 24px; height: 24px; color: #5a6aa3; }
+
+        .cta {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #5a6aa3;
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Lists below */
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b1a3a;
+            margin: 2rem 0 1rem 0;
         }
 
         .languages-section, .interests-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(11, 26, 58, 0.08);
+            margin-top: 1rem;
         }
 
-        .subsection-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ecf0f1;
+        .languages-list, .interests-list { list-style: none; padding: 0; margin: 0; }
+        .languages-list li, .interests-list li { padding: 0.5rem 0; border-bottom: 1px solid #eef1f6; }
+        .languages-list li:last-child, .interests-list li:last-child { border-bottom: none; }
+        .language-item, .interest-item { display: flex; justify-content: space-between; }
+        .language-name, .interest-name { font-weight: 700; }
+        .language-level, .interest-description { color: #2b3b6b; font-style: italic; }
+
+        @media (max-width: 900px) {
+            .info-hero { grid-template-columns: 1fr; text-align: left; }
+            .avatar { width: 180px; height: 180px; }
         }
 
-        .languages-list, .interests-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .languages-list li, .interests-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #ecf0f1;
-            display: flex;
-            align-items: center;
-        }
-
-        .languages-list li:last-child, .interests-list li:last-child {
-            border-bottom: none;
-        }
-
-        .language-item, .interest-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .language-name, .interest-name {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .language-level, .interest-description {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .informations-container {
-                padding: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 700px) {
+            .info-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="informations-container">
-        
-
-        <div class="contact-section">
-            <h2 class="subsection-title">Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="contact-label">Nom :</span>
-                    <span class="contact-value">{{nom}}</span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                    </svg>
-                    <span class="contact-label">Email :</span>
-                    <span class="contact-value"><a href="mailto:{{email}}">{{email}}</a></span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                    </svg>
-                    <span class="contact-label">Téléphone :</span>
-                    <span class="contact-value"><a href="tel:{{telephone}}">{{telephone}}</a></span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="contact-label">Adresse :</span>
-                    <span class="contact-value">{{adresse}}</span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="contact-label">LinkedIn :</span>
-                    <span class="contact-value"><a href="{{linkedin}}" target="_blank">{{linkedin}}</a></span>
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="contact-label">GitHub :</span>
-                    <span class="contact-value"><a href="{{github}}" target="_blank">{{github}}</a></span>
-                </div>
+        <section class="info-hero">
+            <div class="avatar">
+                <!-- Placeholder visuel -->
+                <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.9">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="#fff"></rect>
+                    <circle cx="8.5" cy="8.5" r="2.5" stroke="#fff"></circle>
+                    <path d="M21 15l-4.5-4.5L8 19" stroke="#fff"></path>
+                </svg>
             </div>
-        </div>
+            <div>
+                <div class="hero-title-small">Hi! I'm...</div>
+                <div class="hero-name">{{nom}}</div>
+                <div class="hero-profession">{{profession}}</div>
+            </div>
+        </section>
 
-        <div class="about-section">
-            <h2 class="subsection-title">À propos</h2>
-            <p class="about-text">{{apropos}}</p>
-        </div>
+        <section class="info-grid">
+            <div class="card">
+                <h3>About me</h3>
+                <p class="about-text">{{apropos}}</p>
+                {{#email}}<a class="cta" href="mailto:{{email}}">+ INFO</a>{{/email}}
+            </div>
+            <div class="card">
+                <h3>Personal Information</h3>
+                <ul class="info-list">
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 1114 0H5z"/></svg>
+                        <div><span class="label">Name:</span> <span class="value">{{nom}}</span></div>
+                    </li>
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a2 2 0 012 2v5H4V4a2 2 0 012-2zm16 9H2v9a2 2 0 002 2h16a2 2 0 002-2v-9z"/></svg>
+                        <div><span class="label">Birthday:</span> <span class="value">{{date_naissance}}</span></div>
+                    </li>
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72 12.64 12.64 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 11a16 16 0 006 6l1.36-1.36a2 2 0 012.11-.45 12.64 12.64 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        <div><span class="label">Phone:</span> <span class="value"><a href="tel:{{telephone}}">{{telephone}}</a></span></div>
+                    </li>
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg>
+                        <div><span class="label">Email:</span> <span class="value"><a href="mailto:{{email}}">{{email}}</a></span></div>
+                    </li>
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>
+                        <div><span class="label">Address:</span> <span class="value">{{adresse}}</span></div>
+                    </li>
+                    {{#linkedin}}
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <div><span class="label">LinkedIn:</span> <span class="value"><a href="{{linkedin}}" target="_blank">{{linkedin}}</a></span></div>
+                    </li>
+                    {{/linkedin}}
+                    {{#github}}
+                    <li class="info-item">
+                        <svg class="Icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 000 12a11.5 11.5 0 008 11v-3.6c-1.7.4-2.1-.8-2.1-.8-.3-.9-.8-1.1-.8-1.1-.7-.5.1-.5.1-.5.8.1 1.2.9 1.2.9.7 1.2 1.9.8 2.3.6.1-.5.3-.8.5-1-1.8-.2-3.7-.9-3.7-4.1 0-.9.3-1.6.8-2.2-.1-.2-.3-1 .1-2.1 0 0 .7-.2 2.2.8.7-.2 1.5-.3 2.3-.3s1.6.1 2.3.3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.2-1.9 3.9-3.7 4.1.3.2.6.7.6 1.5V23A11.5 11.5 0 0024 12 11.5 11.5 0 0012 .5z"/></svg>
+                        <div><span class="label">GitHub:</span> <span class="value"><a href="{{github}}" target="_blank">{{github}}</a></span></div>
+                    </li>
+                    {{/github}}
+                </ul>
+            </div>
+        </section>
 
         <div class="languages-section">
             <h2 class="subsection-title">Langues</h2>

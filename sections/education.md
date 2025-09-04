@@ -2,39 +2,39 @@
 
 ## Formation Supérieure
 
-### [Nom du diplôme] - [Année]
-**École/Université :** [Nom de l'établissement]  
-**Lieu :** [Ville, Pays]  
-**Spécialisation :** [Votre spécialisation]  
-**Mention :** [Mention obtenue si applicable]
+### Master Informatique - 2018
+**École/Université :** Sorbonne Université  
+**Lieu :** Paris, France  
+**Spécialisation :** Architectures logicielles et systèmes distribués  
+**Mention :** Bien
 
 **Projets marquants :**
-- [Description d'un projet important]
-- [Autre projet significatif]
+- Plateforme de streaming en temps réel (Node.js, WebRTC, Redis)
+- Moteur de recommandation basé sur Spark et Kafka
 
-### [Autre diplôme] - [Année]
-**École/Université :** [Nom de l'établissement]  
-**Lieu :** [Ville, Pays]  
-**Spécialisation :** [Votre spécialisation]
+### Licence Informatique - 2016
+**École/Université :** Université de Lyon  
+**Lieu :** Lyon, France  
+**Spécialisation :** Génie logiciel
 
 ## Certifications
 
-### [Nom de la certification] - [Année]
-**Organisme :** [Nom de l'organisme]  
-**Durée :** [Durée de validité]  
-**Compétences acquises :** [Liste des compétences]
+### AWS Certified Solutions Architect Associate - 2022
+**Organisme :** Amazon Web Services  
+**Durée :** 3 ans  
+**Compétences acquises :** Architecture cloud, VPC, IAM, S3, Lambda, RDS, haute disponibilité
 
-### [Autre certification] - [Année]
-**Organisme :** [Nom de l'organisme]  
-**Compétences acquises :** [Liste des compétences]
+### Scrum Master (PSM I) - 2021
+**Organisme :** Scrum.org  
+**Compétences acquises :** Scrum, facilitation d’équipe, amélioration continue
 
 ## Formation Continue
 
-### [Nom de la formation] - [Année]
-**Organisme :** [Nom de l'organisme]  
-**Durée :** [Nombre d'heures]  
-**Objectif :** [Ce que vous avez appris]
+### Kubernetes avancé - 2023
+**Organisme :** Udemy  
+**Durée :** 20h  
+**Objectif :** Déployer et gérer des clusters K8s, Helm, autoscaling, observabilité
 
-### [Autre formation] - [Année]
-**Organisme :** [Nom de l'organisme]  
-**Objectif :** [Ce que vous avez appris]
+### React Performance & Patterns - 2024
+**Organisme :** Frontend Masters  
+**Objectif :** Optimisation des rendus, Suspense, Server Components

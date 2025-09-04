@@ -1,54 +1,54 @@
 # Expériences Professionnelles
 
-## [Titre du poste] - [Période]
-**Entreprise :** [Nom de l'entreprise]  
-**Lieu :** [Ville, Pays]  
-**Type :** [CDI/CDD/Stage/Freelance]
+## Ingénieur Logiciel - 2021–Aujourd'hui
+**Entreprise :** HexaTech  
+**Lieu :** Paris, France  
+**Type :** CDI
 
 ### Missions principales :
-- [Description de votre mission principale]
-- [Autre responsabilité importante]
-- [Projet ou réalisation marquante]
+- Conception et développement d’une plateforme SaaS (React, Node.js, PostgreSQL)
+- Mise en place CI/CD (GitHub Actions, Docker, AWS ECS)
+- Encadrement de 3 développeurs juniors
 
 ### Compétences développées :
-- [Compétence technique 1]
-- [Compétence technique 2]
-- [Compétence managériale ou soft skill]
+- Micro‑services, event‑driven, message broker (SQS)
+- Optimisation front (memo, virtualization, code‑splitting)
+- Gestion de projet agile, communication avec les parties prenantes
 
 ### Réalisations :
-- [Résultat quantifié si possible]
-- [Impact sur l'entreprise ou l'équipe]
+- -38% de temps de chargement moyen et +22% de conversion
+- Réduction des coûts d’infra de 30% via right‑sizing et cache
 
 ---
 
-## [Titre du poste précédent] - [Période]
-**Entreprise :** [Nom de l'entreprise]  
-**Lieu :** [Ville, Pays]  
-**Type :** [CDI/CDD/Stage/Freelance]
+## Développeur Full‑Stack - 2019–2021
+**Entreprise :** DataNova  
+**Lieu :** Lyon, France  
+**Type :** CDI
 
 ### Missions principales :
-- [Description de votre mission principale]
-- [Autre responsabilité importante]
+- Développement d’APIs REST Node.js et d’interfaces React
+- Intégration de dashboards analytiques (D3.js)
 
 ### Compétences développées :
-- [Compétence technique 1]
-- [Compétence technique 2]
+- Conception de schémas SQL, optimisation de requêtes
+- Tests automatisés (Jest, Testing Library)
 
 ### Réalisations :
-- [Résultat quantifié si possible]
+- Mise en place d’un pipeline ETL réduisant le délai de data de 6h à 20min
 
 ---
 
-## [Autre expérience] - [Période]
-**Entreprise :** [Nom de l'entreprise]  
-**Lieu :** [Ville, Pays]  
-**Type :** [CDI/CDD/Stage/Freelance]
+## Stagiaire Développement Web - 2018
+**Entreprise :** StudioPixel  
+**Lieu :** Toulouse, France  
+**Type :** Stage
 
 ### Missions principales :
-- [Description de votre mission principale]
+- Intégration de maquettes responsives et optimisation Lighthouse
 
 ### Compétences développées :
-- [Compétence technique 1]
+- HTML5/CSS3, accessibilité, SEO
 
 ### Réalisations :
-- [Résultat quantifié si possible]
+- Score Lighthouse > 95 sur 5 sites livrés

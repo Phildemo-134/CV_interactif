@@ -2,105 +2,105 @@
 
 ## Projets Professionnels
 
-### [Nom du Projet 1]
-**Période :** [Date de début - Date de fin]  
-**Technologies :** [Liste des technologies utilisées]  
-**Rôle :** [Votre rôle dans le projet]
+### Orion CRM
+**Période :** 2022-01 - 2023-09  
+**Technologies :** React, TypeScript, Node.js, PostgreSQL, Redis, AWS  
+**Rôle :** Développeur principal
 
 **Description :**
-[Description détaillée du projet, de ses objectifs et de son contexte]
+Refonte d’un CRM B2B pour la gestion d’équipes commerciales avec synchronisation en temps réel et reporting avancé.
 
 **Fonctionnalités principales :**
-- [Fonctionnalité 1]
-- [Fonctionnalité 2]
-- [Fonctionnalité 3]
+- Kanban drag‑and‑drop, filtres sauvegardés
+- Notifications temps réel via WebSocket
+- Rapports dynamiques exportables (CSV/PDF)
 
 **Défis relevés :**
-- [Défi technique ou organisationnel]
-- [Solution apportée]
+- Montée en charge à 5k utilisateurs simultanés — mise en place de cache Redis et pagination serveur
+- Migration progressive sans interruption — feature flags et canary releases
 
-**Lien :** [URL du projet si disponible]  
-**Code source :** [Lien vers le repository GitHub]
+**Lien :** https://orion.example.com  
+**Code source :** privé
 
 ---
 
-### [Nom du Projet 2]
-**Période :** [Date de début - Date de fin]  
-**Technologies :** [Liste des technologies utilisées]  
-**Rôle :** [Votre rôle dans le projet]
+### Helios Analytics
+**Période :** 2021-03 - 2021-12  
+**Technologies :** Next.js, GraphQL, D3.js, Snowflake  
+**Rôle :** Développeur Front
 
 **Description :**
-[Description détaillée du projet]
+Tableau de bord analytique pour la visualisation de KPIs marketing et ventes.
 
 **Fonctionnalités principales :**
-- [Fonctionnalité 1]
-- [Fonctionnalité 2]
+- Graphiques interactifs (zoom, brush, export image)
+- Thèmes personnalisables et partage de vues
 
 **Impact :**
-- [Résultat quantifié]
-- [Bénéfice pour l'utilisateur ou l'entreprise]
+- Temps d’analyse réduit de 60%
+- Adoption par 120+ utilisateurs en 2 mois
 
-**Lien :** [URL du projet si disponible]
+**Lien :** https://helios-analytics.example.com
 
 ---
 
 ## Projets Personnels
 
-### [Nom du Projet Personnel 1]
-**Technologies :** [Technologies utilisées]  
-**Statut :** [En cours/Terminé/En pause]
+### AstroFocus
+**Technologies :** React Native, Expo, SQLite  
+**Statut :** En cours
 
 **Description :**
-[Description du projet personnel, motivation et objectifs]
+Application mobile de suivi d’habitudes et de focus avec timer Pomodoro et statistiques hors‑ligne.
 
 **Fonctionnalités :**
-- [Fonctionnalité 1]
-- [Fonctionnalité 2]
+- Rappels intelligents basés sur l’historique
+- Widgets iOS/Android et export CSV
 
 **Apprentissages :**
-- [Ce que vous avez appris]
-- [Compétences développées]
+- Architecture offline‑first, synchronisation et conflits
+- Optimisation des animations et du rendu mobile
 
-**Lien :** [URL du projet]  
-**Code source :** [Lien GitHub]
+**Lien :** https://astrofocus.example.com  
+**Code source :** https://github.com/phil-demo/astrofocus
 
 ---
 
-### [Nom du Projet Personnel 2]
-**Technologies :** [Technologies utilisées]  
-**Statut :** [En cours/Terminé/En pause]
+### PictoGen
+**Technologies :** Python, FastAPI, Hugging Face  
+**Statut :** Terminé
 
 **Description :**
-[Description du projet]
+Service d’API pour génération d’images à partir de prompts.
 
 **Fonctionnalités :**
-- [Fonctionnalité 1]
+- File d’attente avec workers et quotas par utilisateur
 
-**Lien :** [URL du projet]
+**Lien :** https://pictogen.example.com
 
 ## Contributions Open Source
 
-### [Nom du Projet Open Source]
-**Contribution :** [Type de contribution : bug fix, feature, documentation]  
-**Technologies :** [Technologies du projet]
+### Vite
+**Contribution :** Documentation et amélioration d’exemples  
+**Technologies :** Vite, Rollup, TypeScript
 
 **Description :**
-[Description de votre contribution]
+Corrections de guides et ajout d’un exemple de configuration pour monorepo.
 
-**Lien :** [Lien vers la pull request ou l'issue]
+**Lien :** https://github.com/vitejs/vite/pull/99999
 
 ---
 
 ## Réalisations & Distinctions
 
-### [Titre de la réalisation]
-**Date :** [Date]  
-**Organisme :** [Organisme qui a décerné la distinction]
+### Lauréat Hackathon GreenTech
+**Date :** 2023-06  
+**Organisme :** Ville de Paris
 
 **Description :**
-[Description de la réalisation et de son importance]
+Développement en 48h d’une application mesurant l’empreinte carbone des trajets urbains.
 
-### [Autre réalisation]
-**Date :** [Date]  
+### Conférencier Meetup JS
+**Date :** 2022-10  
 **Description :**
-[Description de la réalisation]
+Talk sur la performance dans les applications React.

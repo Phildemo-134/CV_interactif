@@ -4,14 +4,14 @@ const CONFIG = {
         'informations': 'sections/informations.md',
         'education': 'sections/education.md',
         'experiences': 'sections/experiences.md',
-        'qualites': 'sections/qualites.md',
+        'competences': 'sections/competences.md',
         'portfolio': 'sections/portfolio.md'
     },
     templates: {
         'informations': 'templates/informations.html',
         'education': 'templates/education.html',
         'experiences': 'templates/experiences.html',
-        'qualites': 'templates/qualites.html',
+        'competences': 'templates/competences.html',
         'portfolio': 'templates/portfolio.html'
     }
 };
@@ -189,8 +189,8 @@ function parseMarkdownToStructuredData(markdownText, sectionId) {
             return parseEducationData(lines);
         case 'portfolio':
             return parsePortfolioData(lines);
-        case 'qualites':
-            return parseQualitesData(lines);
+        case 'competences':
+            return parseCompetencesData(lines);
         default:
             return {};
     }
@@ -200,6 +200,8 @@ function parseMarkdownToStructuredData(markdownText, sectionId) {
 function parseInformationsData(lines) {
     const data = {
         nom: '',
+        profession: '',
+        date_naissance: '',
         email: '',
         telephone: '',
         adresse: '',
@@ -226,6 +228,10 @@ function parseInformationsData(lines) {
             currentSection = 'interets';
         } else if (line.startsWith('- **Nom :**')) {
             data.nom = line.replace('- **Nom :**', '').trim();
+        } else if (line.startsWith('- **Profession :**')) {
+            data.profession = line.replace('- **Profession :**', '').trim();
+        } else if (line.startsWith('- **Date de naissance :**')) {
+            data.date_naissance = line.replace('- **Date de naissance :**', '').trim();
         } else if (line.startsWith('- **Email :**')) {
             data.email = line.replace('- **Email :**', '').trim();
         } else if (line.startsWith('- **Téléphone :**')) {
@@ -238,13 +244,15 @@ function parseInformationsData(lines) {
             data.github = line.replace('- **GitHub :**', '').trim();
         } else if (currentSection === 'apropos' && line && !line.startsWith('##')) {
             aboutText.push(line);
-        } else if (currentSection === 'langues' && line.startsWith('- **')) {
-            const match = line.match(/- \*\*(.+?) :\*\* (.+)/);
+        } else if (currentSection === 'langues' && line.startsWith('- ')) {
+            // Supporte "- **Français :** Niveau" ou "- Français : Niveau" ou "- Français: Niveau"
+            const match = line.match(/-\s*(?:\*\*(.+?)\s*:\*\*|([^:]+))\s*:??\s*(.+)/);
             if (match) {
-                data.langues.push({
-                    nom: match[1],
-                    niveau: match[2]
-                });
+                const nom = (match[1] || match[2] || '').trim();
+                const niveau = (match[3] || '').trim();
+                if (nom && niveau) {
+                    data.langues.push({ nom, niveau });
+                }
             }
         } else if (currentSection === 'interets' && line.startsWith('- ')) {
             data.interets.push({
@@ -320,7 +328,8 @@ function parseEducationData(lines) {
     const data = {
         formations: [],
         certifications: [],
-        formations_continue: []
+        formations_continue: [],
+        timeline: []
     };
     
     let currentSection = '';
@@ -400,7 +409,31 @@ function parseEducationData(lines) {
             data.formations_continue.push(currentItem);
         }
     }
-    
+
+    // Trier chaque liste par année décroissante (plus récent -> plus ancien)
+    const extractMostRecentYear = (value) => {
+        if (!value) return -Infinity;
+        const matches = String(value).match(/\d{4}/g);
+        if (!matches || matches.length === 0) return -Infinity;
+        return Math.max(...matches.map(Number));
+    };
+
+    ['formations', 'certifications', 'formations_continue'].forEach((key) => {
+        if (Array.isArray(data[key])) {
+            data[key].sort((a, b) => extractMostRecentYear(b.annee) - extractMostRecentYear(a.annee));
+        }
+    });
+
+    // Construire une timeline unique triée décroissante
+    const combined = []
+        .concat(
+            data.formations.map(it => ({ ...it, etablissement: it.ecole || '' })),
+            data.certifications.map(it => ({ ...it, etablissement: it.organisme || '' })),
+            data.formations_continue.map(it => ({ ...it, etablissement: it.organisme || '' }))
+        );
+    combined.sort((a, b) => extractMostRecentYear(b.annee) - extractMostRecentYear(a.annee));
+    data.timeline = combined;
+
     return data;
 }
 
@@ -523,7 +556,7 @@ function parsePortfolioData(lines) {
 }
 
 // Parser pour les qualités
-function parseQualitesData(lines) {
+function parseCompetencesData(lines) {
     const data = {
         langages: [],
         frameworks: [],
@@ -533,7 +566,7 @@ function parseQualitesData(lines) {
         resolution_problemes: [],
         leadership: [],
         adaptabilite: [],
-        qualites_personnelles: [],
+        competences: [],
         competences_maitrise: []
     };
     
@@ -558,8 +591,8 @@ function parseQualitesData(lines) {
             currentSection = 'leadership';
         } else if (line.startsWith('### Adaptabilité')) {
             currentSection = 'adaptabilite';
-        } else if (line.startsWith('### Qualités Personnelles')) {
-            currentSection = 'qualites_personnelles';
+        } else if (line.startsWith('### Compétences')) {
+            currentSection = 'competences';
         } else if (line.startsWith('## Niveau de Maîtrise')) {
             currentSection = 'competences_maitrise';
         } else if (line.startsWith('- **') && currentSection) {
@@ -591,8 +624,8 @@ function parseQualitesData(lines) {
                 data.leadership.push(item);
             } else if (currentSection === 'adaptabilite') {
                 data.adaptabilite.push(item);
-            } else if (currentSection === 'qualites_personnelles') {
-                data.qualites_personnelles.push(item);
+            } else if (currentSection === 'competences') {
+                data.competences.push(item);
             }
         } else if (line.startsWith('||') && currentSection === 'competences_maitrise') {
             // Parser le tableau de maîtrise
@@ -622,39 +655,41 @@ function parseQualitesData(lines) {
 function applyTemplate(templateHtml, structuredData, markdownHtml) {
     // Simple template engine basé sur Mustache
     let result = templateHtml;
-    
-    // Remplacer les variables simples
-    Object.keys(structuredData).forEach(key => {
-        if (typeof structuredData[key] === 'string') {
-            const regex = new RegExp(`{{${key}}}`, 'g');
-            result = result.replace(regex, structuredData[key]);
-        }
-    });
-    
-    // Remplacer les listes
+
+    // 1) Remplacer d'abord les listes pour éviter que les variables scalaires
+    // (ex: {{nom}} du profil) n'écrasent celles des items de liste
+    // (ex: {{nom}} d'une langue).
     Object.keys(structuredData).forEach(key => {
         if (Array.isArray(structuredData[key])) {
-            const listRegex = new RegExp(`{{#${key}}}([\\s\\S]*?){{/${key}}}`, 'g');
+            const listRegex = new RegExp(`{{#${key}}}([\\s\\S]*?){{\/${key}}}`, 'g');
             result = result.replace(listRegex, (match, content) => {
                 return structuredData[key].map(item => {
                     let itemContent = content;
-                    if (typeof item === 'object') {
+                    if (typeof item === 'object' && item !== null) {
                         Object.keys(item).forEach(itemKey => {
                             const itemRegex = new RegExp(`{{${itemKey}}}`, 'g');
                             itemContent = itemContent.replace(itemRegex, item[itemKey] || '');
                         });
                     } else {
-                        itemContent = itemContent.replace(/{{\.}}/g, item);
+                        itemContent = itemContent.replace(/{{\.}}/g, String(item));
                     }
                     return itemContent;
                 }).join('');
             });
         }
     });
-    
-    // Nettoyer les variables non remplacées
+
+    // 2) Puis remplacer les variables simples restantes
+    Object.keys(structuredData).forEach(key => {
+        if (typeof structuredData[key] === 'string') {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            result = result.replace(regex, structuredData[key]);
+        }
+    });
+
+    // 3) Nettoyer les variables non remplacées
     result = result.replace(/{{[^}]+}}/g, '');
-    
+
     return result;
 }
 
@@ -687,7 +722,7 @@ function handleScroll() {
 function handleKeyboard(e) {
     // Navigation avec les flèches gauche/droite
     if (e.altKey) {
-        const sections = ['accueil', 'informations', 'education', 'experiences', 'qualites', 'portfolio'];
+        const sections = ['accueil', 'informations', 'education', 'experiences', 'compétences', 'portfolio'];
         const currentIndex = sections.indexOf(currentSection);
         
         if (e.key === 'ArrowLeft' && currentIndex > 0) {
