@@ -24,6 +24,8 @@ let loadedSections = new Set();
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeMobileMenu();
+    // Afficher la section ciblée par le hash si présent (ex: index.html#portfolio)
+    updateSectionFromHash();
     loadMarkdownContent();
     
     // Gestion du scroll pour la navigation
@@ -31,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Gestion des raccourcis clavier
     document.addEventListener('keydown', handleKeyboard);
+    
+    // Réagir aux changements de hash (navigation via liens externes / back/forward)
+    window.addEventListener('hashchange', updateSectionFromHash);
 });
 
 // Navigation
@@ -72,6 +77,14 @@ function showSection(sectionId) {
         
         // Scroll vers le haut
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Gestion du hash de l'URL pour affichage direct d'une section
+function updateSectionFromHash() {
+    const hash = (window.location.hash || '').replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        showSection(hash);
     }
 }
 
@@ -463,7 +476,7 @@ function parsePortfolioData(lines) {
             currentSection = 'contributions_opensource';
         } else if (line.startsWith('## Réalisations & Distinctions')) {
             currentSection = 'realisations';
-        } else if (line.startsWith('### ') && !line.includes('##')) {
+        } else if (line.startsWith('### ')) {
             if (currentItem) {
                 if (currentSection === 'projets_professionnels') {
                     data.projets_professionnels.push(currentItem);
@@ -555,6 +568,16 @@ function parsePortfolioData(lines) {
         }
     }
     
+    // Drapeaux d'existence de sections pour le template
+    const setFlags = (arr) => arr.map((it) => ({
+        ...it,
+        has_fonctionnalites: Array.isArray(it.fonctionnalites) && it.fonctionnalites.length > 0,
+        has_defis: Array.isArray(it.defis) && it.defis.length > 0,
+        has_impact: Array.isArray(it.impact) && it.impact.length > 0,
+        has_apprentissages: Array.isArray(it.apprentissages) && it.apprentissages.length > 0
+    }));
+    data.projets_professionnels = setFlags(data.projets_professionnels);
+    data.projets_personnels = setFlags(data.projets_personnels);
     return data;
 }
 
@@ -656,44 +679,53 @@ function parseCompetencesData(lines) {
 
 // Appliquer le template avec les données
 function applyTemplate(templateHtml, structuredData, markdownHtml) {
-    // Simple template engine basé sur Mustache
-    let result = templateHtml;
+    // Mini moteur de template récursif (Mustache-like) avec support des listes imbriquées
+    const render = (tpl, data) => {
+        let out = tpl;
 
-    // 1) Remplacer d'abord les listes pour éviter que les variables scalaires
-    // (ex: {{nom}} du profil) n'écrasent celles des items de liste
-    // (ex: {{nom}} d'une langue).
-    Object.keys(structuredData).forEach(key => {
-        if (Array.isArray(structuredData[key])) {
-            const listRegex = new RegExp(`{{#${key}}}([\\s\\S]*?){{\/${key}}}`, 'g');
-            result = result.replace(listRegex, (match, content) => {
-                return structuredData[key].map(item => {
-                    let itemContent = content;
-                    if (typeof item === 'object' && item !== null) {
-                        Object.keys(item).forEach(itemKey => {
-                            const itemRegex = new RegExp(`{{${itemKey}}}`, 'g');
-                            itemContent = itemContent.replace(itemRegex, item[itemKey] || '');
-                        });
-                    } else {
-                        itemContent = itemContent.replace(/{{\.}}/g, String(item));
-                    }
-                    return itemContent;
-                }).join('');
-            });
+        // 1) Gérer les sections listes {{#key}}...{{/key}}
+        Object.keys(data).forEach((key) => {
+            const value = data[key];
+            const sectionRegex = new RegExp(`{{#${key}}}([\\s\\S]*?){{\/${key}}}`, 'g');
+
+            if (Array.isArray(value)) {
+                out = out.replace(sectionRegex, (match, inner) => {
+                    if (!value || value.length === 0) return '';
+                    return value.map((item) => {
+                        const context = (item && typeof item === 'object') ? item : { '.': item };
+                        return render(inner, context);
+                    }).join('');
+                });
+            } else if (value) {
+                // Section de présence (truthy non-array)
+                out = out.replace(sectionRegex, (_, inner) => render(inner, data));
+            } else {
+                out = out.replace(sectionRegex, '');
+            }
+        });
+
+        // 2) Remplacer les variables scalaires
+        Object.keys(data).forEach((key) => {
+            const value = data[key];
+            if (typeof value === 'string' || typeof value === 'number') {
+                const varRegex = new RegExp(`{{${key}}}`, 'g');
+                out = out.replace(varRegex, String(value));
+            }
+        });
+
+        // 3) Remplacer {{.}} pour les primitives en contexte
+        if (typeof data === 'string' || typeof data === 'number') {
+            out = out.replace(/{{\.}}/g, String(data));
+        } else if (data && typeof data['.'] !== 'undefined') {
+            out = out.replace(/{{\.}}/g, String(data['.']));
         }
-    });
 
-    // 2) Puis remplacer les variables simples restantes
-    Object.keys(structuredData).forEach(key => {
-        if (typeof structuredData[key] === 'string') {
-            const regex = new RegExp(`{{${key}}}`, 'g');
-            result = result.replace(regex, structuredData[key]);
-        }
-    });
+        return out;
+    };
 
-    // 3) Nettoyer les variables non remplacées
-    result = result.replace(/{{[^}]+}}/g, '');
-
-    return result;
+    const rendered = render(templateHtml, structuredData || {});
+    // Nettoyage final des variables non remplacées
+    return rendered.replace(/{{[^}]+}}/g, '');
 }
 
 // Animation du contenu
@@ -725,7 +757,7 @@ function handleScroll() {
 function handleKeyboard(e) {
     // Navigation avec les flèches gauche/droite
     if (e.altKey) {
-        const sections = ['accueil', 'informations', 'education', 'experiences', 'compétences', 'portfolio'];
+        const sections = ['accueil', 'informations', 'education', 'experiences', 'competences', 'portfolio'];
         const currentIndex = sections.indexOf(currentSection);
         
         if (e.key === 'ArrowLeft' && currentIndex > 0) {
