@@ -39,8 +39,11 @@ function initializeNavigation() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const sectionId = this.getAttribute('data-section');
+            if (!sectionId) {
+                return; // lien externe ou vers une autre page: laisser le comportement par défaut
+            }
+            e.preventDefault();
             showSection(sectionId);
         });
     });

@@ -221,6 +221,56 @@ body {
     border: 1px solid var(--border-color);
 }
 
+/* Formulaire de contact */
+.contact-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 640px;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.contact-form input[type="email"],
+.contact-form input[type="text"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    background: var(--bg-primary);
+}
+
+.contact-form .cta-button {
+    align-self: start;
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        max-width: 100%;
+    }
+}
+
 /* Styles pour le contenu markdown */
 .markdown-content {
     line-height: 1.7;
