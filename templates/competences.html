@@ -6,13 +6,18 @@
     <title>Qualités & Compétences</title>
     <style>
         .competences-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #0b1a3a;
         }
+
+        /* Hero */
+        .comp-hero { text-align: left; margin: 1rem 0 2.5rem 0; }
+        .comp-title { font-size: 4.25rem; line-height: 1.1; font-weight: 800; letter-spacing: 1px; color: #0b1a3a; margin: 0 0 1rem 0; }
+        .comp-subtitle { max-width: 720px; font-size: 1.25rem; color: #2b3b6b; }
 
         .section-header {
             text-align: center;
@@ -53,7 +58,7 @@
             width: 28px;
             height: 28px;
             margin-right: 1rem;
-            color: #3498db;
+            color: #f7a600;
         }
 
         .skills-card {
@@ -91,7 +96,7 @@
             width: 20px;
             height: 20px;
             margin-right: 0.75rem;
-            color: #3498db;
+            color: #0b1a3a;
         }
 
         .skills-list {
@@ -111,11 +116,11 @@
         }
 
         .skills-list li::before {
-            content: "▶";
+            content: "+";
             position: absolute;
             left: 0;
-            color: #3498db;
-            font-size: 0.8rem;
+            color: #f7a600;
+            font-weight: 800;
         }
 
         .skill-item {
@@ -163,7 +168,7 @@
             width: 18px;
             height: 18px;
             margin-right: 0.75rem;
-            color: #e74c3c;
+            color: #f7a600;
         }
 
         .transversal-list {
@@ -183,11 +188,11 @@
         }
 
         .transversal-list li::before {
-            content: "•";
+            content: "+";
             position: absolute;
             left: 0;
-            color: #e74c3c;
-            font-weight: bold;
+            color: #f7a600;
+            font-weight: 800;
         }
 
         .soft-skills {
@@ -218,7 +223,7 @@
             width: 18px;
             height: 18px;
             margin-right: 0.75rem;
-            color: #f39c12;
+            color: #f7a600;
         }
 
         .soft-skill-list {
@@ -254,7 +259,7 @@
         }
 
         .mastery-header {
-            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            background: linear-gradient(135deg, #0b1a3a 0%, #2b3b6b 100%);
             color: white;
             padding: 1.5rem 2rem;
         }
@@ -347,9 +352,7 @@
                 padding: 1rem;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
+            .comp-title { font-size: 3.25rem; }
             
             .skills-grid, .transversal-skills, .soft-skills {
                 grid-template-columns: 1fr;
@@ -373,7 +376,10 @@
 </head>
 <body>
     <div class="competences-container">
-        
+        <section class="comp-hero">
+            <h1 class="comp-title">Compétences</h1>
+            <p class="comp-subtitle">Aperçu de mes compétences techniques, transversales et soft skills</p>
+        </section>
 
         <div class="skills-section">
             <div class="section-category">
